@@ -1,0 +1,15 @@
+{
+  "name": "lmmailvariables",
+  "version": "1.0.0",
+  "description": "PrestaShop modulis mail kintamiesiems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mail",
+    "vars"
+  ],
+  "author": "Mituzas (https://augusupresta.lt/)",
+  "license": "ISC"
+}
