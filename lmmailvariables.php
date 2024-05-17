@@ -12,11 +12,18 @@ class FixBankWireMails extends Module
         $this->version = '1.0';
         $this->author = 'augusupresta.lt';
         $this->need_instance = 0;
+        $this->ps_versions_compliancy = [
+            'min' => '1.7.6.2',
+            'max' => '8.9.9',
+        ];
+        $this->bootstrap = true;
+
+                $this->displayName = $this->l('Mail variables');
+        $this->description = $this->l('Fix Bank Wire module mail variables from backoffice orders. Add additional varbialbles to show selected terminals by buyer for Omniva and LP Shipping');
+
+        $this->confirmUninstall = "Are you sure?";
 
         parent::__construct();
-
-        $this->displayName = $this->l('Mail variables');
-        $this->description = $this->l('Fix Bank Wire module mail variables from backoffice orders. Add additional varbialbles to show selected terminals by buyer for Omniva and LP Shipping');
     }
 
     public function install()
@@ -24,6 +31,11 @@ class FixBankWireMails extends Module
         if (!parent::install() || !$this->registerHook('sendMailAlterTemplateVars'))
             return false;
         return true;
+    }
+
+    public function uninstall()
+    {
+        return parent::uninstall();
     }
 
     public function hookSendMailAlterTemplateVars($params)
@@ -34,4 +46,11 @@ class FixBankWireMails extends Module
             $params['template_vars']['{bankwire_address}'] = nl2br(Configuration::get('BANK_WIRE_ADDRESS'));
         }
     }
+
+    public function getContent()
+    {
+        return 'This is a configuration page!';
+    }
+
+    
 }
